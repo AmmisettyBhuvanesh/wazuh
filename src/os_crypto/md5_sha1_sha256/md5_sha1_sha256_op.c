@@ -14,7 +14,6 @@
 
 #include "md5_sha1_sha256_op.h"
 #include <openssl/evp.h>
-#include <openssl/md5.h>
 #include <openssl/sha.h>
 #include "headers/defs.h"
 
