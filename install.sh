@@ -145,9 +145,11 @@ Install()
     if [ "X${update_only}" = "Xyes" ]; then
         WazuhUpgrade $INSTYPE
         # Update versions previous to Wazuh 4.8
-        OSSEC_CONFIGURATION_FILE="$USER_DIR/etc/ossec.conf"
+        local OSSEC_CONFIGURATION_FILE="$USER_DIR/etc/ossec.conf"
+        local VULN_TEMPLATE="./etc/templates/config/generic/wodle-vulnerability-detection.manager.template"
+        local INDEXER_TEMPLATE="./etc/templates/config/generic/wodle-indexer.manager.template"
         source ./src/init/replace_vulnerability_detector.sh
-        updateVulnerabilityDetector $OSSEC_CONFIGURATION_FILE
+        updateVulnerabilityDetector $OSSEC_CONFIGURATION_FILE $VULN_TEMPLATE $INDEXER_TEMPLATE
         # Update versions previous to Wazuh 1.2
         UpdateOldVersions
         echo "Starting Wazuh..."
